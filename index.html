@@ -1,0 +1,254 @@
+<title>ROYAL X11</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout: dark one-column mobile landing page. Sticky logo bar, hero with phone mockup, stats, feature cards, how-it-works, final download call. Red on near-black. */
+:root{
+  --bg:#0a0507;
+  --bg-2:#130a0d;
+  --card:#190d11;
+  --line:#2c161b;
+  --fg:#f6eeee;
+  --muted:#b49aa0;
+  --red:#ff2a2a;
+  --red-deep:#c40f1c;
+  --glow:rgba(255,42,42,.45);--gold:#ffb81c;--gold-2:#ff8a00;--chrome:linear-gradient(180deg,#fff 0%,#e9e9ef 45%,#9a98a4 100%);
+  --ok:#25d366;
+  --font-display:'Barlow Condensed','Arial Narrow',Impact,sans-serif;
+  --font-body:'Barlow',system-ui,-apple-system,'Segoe UI',sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:16px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  background-image:radial-gradient(60rem 30rem at 50% -8rem,rgba(255,42,42,.32),transparent 60%),linear-gradient(115deg,transparent 40%,rgba(255,42,42,.10) 40.2%,transparent 40.6%,transparent 52%,rgba(255,42,42,.07) 52.2%,transparent 52.8%),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cpath d='M14 0 28 8v16L14 32 0 24V8zM14 32l14 8v9H0v-9z' fill='none' stroke='%23ff2a2a' stroke-opacity='.07'/%3E%3C/svg%3E");
+  background-repeat:no-repeat,no-repeat,repeat;overflow-x:hidden;
+}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+.wrap{max-width:30rem;margin:0 auto}
+h1,h2,h3{font-family:var(--font-display);text-transform:uppercase;line-height:1;margin:0;text-wrap:balance;letter-spacing:.01em}
+p{margin:0}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+
+/* header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(10,5,7,.86);backdrop-filter:blur(10px);
+  margin-inline:calc(-1*max(16px,env(safe-area-inset-left,0px)));padding-inline:max(16px,env(safe-area-inset-left,0px));border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:56px;max-width:30rem;margin:0 auto}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-weight:800;font-size:1.35rem;letter-spacing:.04em}
+.brand img{width:36px;height:36px;border-radius:10px;display:block}
+.brand b{color:var(--red)}
+.menu-btn{width:40px;height:40px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--fg);display:grid;place-items:center;cursor:pointer}
+.menu-btn svg{width:20px;height:20px}
+nav.drawer{display:none;flex-direction:column;max-width:30rem;margin:0 auto;padding-bottom:12px}
+nav.drawer.open{display:flex}
+nav.drawer a{padding:12px 4px;border-top:1px solid var(--line);font-weight:500;color:var(--muted)}
+
+/* hero */
+.hero{padding-block:34px 8px;text-align:center}
+.pill{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-display);font-weight:700;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--red);border:1px solid rgba(255,42,42,.4);background:rgba(255,42,42,.08);padding:7px 14px;border-radius:99px}
+.pill i{width:7px;height:7px;border-radius:50%;background:var(--red);box-shadow:0 0 10px var(--red);animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.35}}
+.hero h1{font-size:clamp(3.4rem,17vw,5rem);font-weight:800;margin-top:6px;font-style:italic;background:var(--chrome);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 4px 0 rgba(0,0,0,.5))}
+.hero-logo{width:min(58vw,13rem);height:auto;aspect-ratio:1;object-fit:cover;margin:0 auto 18px;border-radius:26%;display:block;box-shadow:0 0 0 1px rgba(255,60,60,.5),0 0 40px rgba(255,42,42,.55),0 0 110px rgba(255,42,42,.35);animation:float 5s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-8px)}}
+.hero h1 em{display:block;font-style:italic;font-size:.62em;margin-top:.12em;overflow-wrap:anywhere;background:linear-gradient(180deg,#ff6a5a,var(--red) 55%,var(--red-deep));-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 22px var(--glow))}
+.hero p.lead{color:var(--muted);margin:18px auto 0;max-width:26rem}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;height:56px;border-radius:12px;font-family:var(--font-display);font-weight:800;font-size:1.2rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;border:0}
+.btn svg{width:22px;height:22px}
+.btn-red{position:relative;overflow:hidden;background:linear-gradient(180deg,#ff4a34,var(--red) 45%,var(--red-deep));color:#fff;border:1px solid rgba(255,150,130,.5);box-shadow:0 0 28px -4px var(--glow),0 12px 30px -10px var(--glow),inset 0 1px 0 rgba(255,255,255,.4)}
+.btn-red::after{content:"";position:absolute;inset:0 auto 0 -60%;width:40%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);animation:shine 3.2s ease-in-out infinite}
+@keyframes shine{60%,100%{left:130%}}
+.btn-ghost{background:transparent;color:var(--fg);border:1px solid var(--line);height:48px;font-size:1rem;width:auto;padding-inline:26px;margin-inline:auto;margin-top:12px}
+.cta{margin-top:26px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:30px}
+.stat{padding:12px 4px;border:1px solid rgba(255,184,28,.25);border-radius:12px;background:linear-gradient(180deg,rgba(255,184,28,.08),transparent)}
+.stat strong{display:block;font-family:var(--font-display);font-weight:800;font-size:1.9rem;line-height:1.05;background:linear-gradient(180deg,#ffe08a,var(--gold) 50%,var(--gold-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat span{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+
+/* phone */
+.stage{position:relative;display:grid;place-items:center;padding-block:44px 30px}
+.stage::before{content:"";position:absolute;width:80%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(255,42,42,.45),transparent 65%);filter:blur(30px)}
+.phone{position:relative;width:min(66vw,17rem);aspect-ratio:720/1608;border-radius:15% / 6.8%;padding:2.4%;
+  background:linear-gradient(145deg,#4a4044,#16101a 40%,#3a2f33);box-shadow:0 0 0 1.5px #8a7880,0 0 0 4px rgba(255,42,42,.25),0 40px 70px -20px #000,0 0 90px -5px var(--glow)}
+.phone .screen{width:100%;height:100%;border-radius:12.5% / 5.6%;overflow:hidden;background:#000;position:relative}
+.phone img{width:100%;height:100%;object-fit:cover;display:block}
+.phone.small{width:min(44vw,13rem)}
+.phone.tilt{transform:rotate(-4deg)}
+
+/* sections */
+section{padding-block:46px 6px}
+.eyebrow{display:block;text-align:center;font-family:var(--font-display);font-weight:700;font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:14px}
+section h2{font-size:clamp(2.1rem,10vw,2.8rem);font-weight:800;text-align:center;font-style:italic;background:var(--chrome);-webkit-background-clip:text;background-clip:text;color:transparent}
+section h2+p{color:var(--muted);text-align:center;margin:12px auto 0;max-width:26rem}
+.rule{width:52px;height:3px;background:var(--red);margin:16px auto 0;border-radius:2px;box-shadow:0 0 14px var(--glow)}
+.cards{display:grid;gap:14px;margin-top:28px}
+.card{position:relative;background:linear-gradient(160deg,#241016,var(--bg-2) 60%);border:1px solid rgba(255,42,42,.35);border-radius:16px;padding:22px 20px;box-shadow:0 0 24px -10px var(--glow),inset 0 1px 0 rgba(255,255,255,.06)}
+.card::after{content:"";position:absolute;top:0;left:20px;right:20px;height:2px;background:linear-gradient(90deg,transparent,var(--red),transparent);box-shadow:0 0 12px var(--red)}
+.ico{width:46px;height:46px;border-radius:12px;background:linear-gradient(145deg,rgba(255,42,42,.25),rgba(255,184,28,.08));border:1px solid rgba(255,120,80,.5);display:grid;place-items:center;color:#ffb347;box-shadow:0 0 18px -4px var(--glow);margin-bottom:16px}
+.ico svg{width:24px;height:24px}
+.card h3{font-size:1.4rem;font-weight:800;letter-spacing:.04em}
+.card p{color:var(--muted);font-size:.95rem;margin-top:8px}
+
+.steps{display:grid;gap:12px;margin-top:28px;counter-reset:s}
+.step{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start;padding:16px;border:1px solid rgba(255,42,42,.3);border-radius:14px;background:var(--bg-2)}
+.step::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--red);color:#fff;font-family:var(--font-display);font-weight:800;font-size:1.4rem;box-shadow:0 0 18px var(--glow)}
+.step h3{font-size:1.2rem;font-weight:700;letter-spacing:.05em}
+.step p{color:var(--muted);font-size:.92rem;margin-top:4px}
+.duo{overflow-x:clip;overflow-y:visible;display:flex;justify-content:center;align-items:center;gap:0;padding-block:34px 28px}
+.duo .phone:first-child{transform:rotate(-5deg) translateX(6%);z-index:1}
+.duo .phone:last-child{transform:rotate(4deg) translateX(-6%) translateY(14px)}
+
+.final{margin-top:50px;text-align:center;border:1px solid rgba(255,42,42,.35);border-radius:20px;padding:34px 20px;
+  background:radial-gradient(30rem 14rem at 50% 0,rgba(255,42,42,.4),transparent 70%),linear-gradient(160deg,#2a1017,#12080b);box-shadow:0 0 60px -15px var(--glow)}
+.final h2{font-size:clamp(2rem,10vw,2.7rem)}
+.final p{color:var(--muted);margin:12px 0 22px}
+.wa{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:12px;height:50px;border-radius:12px;background:rgba(37,211,102,.12);border:1px solid rgba(37,211,102,.4);color:var(--ok);font-weight:600}
+.wa svg{width:22px;height:22px}
+
+footer{padding-block:40px max(34px,env(safe-area-inset-bottom,0px));text-align:center;color:var(--muted);font-size:.85rem}
+footer .brand{justify-content:center;margin-bottom:10px;color:var(--fg)}
+footer .links{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 18px;margin-top:14px}
+.notice{margin-top:14px;font-size:.78rem;opacity:.8}
+
+.fab{position:fixed;right:max(14px,env(safe-area-inset-right,0px));bottom:calc(14px + env(safe-area-inset-bottom,0px));display:grid;gap:10px;z-index:25}
+.fab a{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;color:#fff;box-shadow:0 8px 20px -6px rgba(0,0,0,.7)}
+.fab a svg{width:24px;height:24px}
+.fab .wa-f{background:var(--ok)}
+.fab .up{background:var(--red)}
+@media (prefers-reduced-motion:reduce){.pill i,.hero-logo,.btn-red::after{animation:none}html{scroll-behavior:auto}}
+</style>
+
+<header>
+  <div class="bar">
+    <a class="brand" href="#top" aria-label="ROYAL X11"><img src="logo.jpg" alt="ROYAL X11 logo" width="36" height="36">ROYAL <b>X11</b></a>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+  <nav class="drawer" id="drawer">
+    <a href="#features">Features</a>
+    <a href="#how">How to play</a>
+    <a href="#get">Download</a>
+  </nav>
+</header>
+
+<main class="wrap" id="top">
+  <div class="hero">
+    <img class="hero-logo" src="logo-hd.jpg" alt="ROYAL X11 Tournaments logo" width="900" height="900">
+    <span class="pill"><i></i>Live tournaments running now</span>
+    <h1>Win Big<em>Free Fire Tournaments</em></h1>
+    <p class="lead">Join ROYAL X11, play Free Fire MAX contests with FairPlay ON, climb the rank board and win real cash. Deposits start at just ₹10.</p>
+    <div class="cta">
+      <a class="btn btn-red" id="dl1" href="#get" data-download>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0 4-4m-4 4-4-4M5 20h14"/></svg>
+        Download App
+      </a>
+      <a class="btn btn-ghost" href="#how">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        How to play
+      </a>
+    </div>
+    <div class="stats">
+      <div class="stat"><strong>₹10</strong><span>Min deposit</span></div>
+      <div class="stat"><strong>24/7</strong><span>Support</span></div>
+      <div class="stat"><strong>ON</strong><span>FairPlay</span></div>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="phone"><div class="screen"><img src="app-home.jpg" alt="ROYAL X11 app home screen"></div></div>
+  </div>
+
+  <section id="features">
+    <span class="eyebrow">Why Royal X11</span>
+    <h2>Built for champions</h2>
+    <div class="rule"></div>
+    <p>Everything you need for a fair, fast and rewarding esports experience.</p>
+    <div class="cards">
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 4.5 3.2 8 8 9 4.8-1 8-4.5 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg></div>
+        <h3>FairPlay guarantee</h3>
+        <p>Every contest runs with FairPlay ON, so your skill is the only thing that decides the result.</p>
+      </article>
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0zM7 6H4v1a3 3 0 0 0 3 3M17 6h3v1a3 3 0 0 1-3 3"/></svg></div>
+        <h3>Big winnings for all</h3>
+        <p>Free Fire MAX contests and Sunday Special tournaments with prizes for more than just first place.</p>
+      </article>
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="14" rx="3"/><path d="M3 10h18M16 15h2M6 6V5a2 2 0 0 1 2-2h8"/></svg></div>
+        <h3>Easy add cash</h3>
+        <p>Pick ₹10, ₹20, ₹50, ₹100, ₹200 or ₹500, open the scanner and pay with any UPI app.</p>
+      </article>
+      <article class="card">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/></svg></div>
+        <h3>Support when you need it</h3>
+        <p>Reach the team from inside the app, on WhatsApp or through our YouTube channel.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="how">
+    <span class="eyebrow">Get started</span>
+    <h2>Play in 4 steps</h2>
+    <div class="rule"></div>
+    <div class="steps">
+      <div class="step"><div><h3>Install the app</h3><p>Download ROYAL X11 and sign in.</p></div></div>
+      <div class="step"><div><h3>Add cash</h3><p>Choose an amount from ₹10, open the scanner and pay.</p></div></div>
+      <div class="step"><div><h3>Join a contest</h3><p>Pick Free Fire MAX or Sunday Special and tap Play.</p></div></div>
+      <div class="step"><div><h3>Win and climb</h3><p>Track Upcoming, Ongoing and Completed contests, then check your Rank.</p></div></div>
+    </div>
+    <div class="duo">
+      <div class="phone small"><div class="screen"><img src="app-addcash.jpg" alt="Add Cash screen" loading="lazy"></div></div>
+      <div class="phone small"><div class="screen"><img src="app-home.jpg" alt="Home screen" loading="lazy"></div></div>
+    </div>
+  </section>
+
+  <section id="get">
+    <div class="final">
+      <span class="eyebrow">Get the app</span>
+      <h2>Start competing today</h2>
+      <p>Download ROYAL X11 and join your first tournament in under a minute.</p>
+      <a class="btn btn-red" id="dl2" href="#get" data-download>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0 4-4m-4 4-4-4M5 20h14"/></svg>
+        Download App
+      </a>
+      <a class="wa" id="wa" href="#get">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l1.6-4.7A8.5 8.5 0 1 1 8 19.5z"/><path d="M9 9.5c.5 2.5 2.5 4.5 5.5 5.5l1.2-1.4-2-1-.8.7c-1-.4-1.8-1.2-2.2-2.2l.7-.8-1-2z"/></svg>
+        Join WhatsApp channel
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="logo.jpg" alt="" width="36" height="36">ROYAL <b>X11</b></a>
+    <p>Free Fire tournaments, built for gamers.</p>
+    <div class="links"><a href="#features">Features</a><a href="#how">How to play</a><a href="#get">Download</a></div>
+    <p class="notice">Play responsibly. Participation involves real money. 18+ only.</p>
+  </div>
+</footer>
+
+<div class="fab">
+  <a class="wa-f" href="#get" id="waF" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l1.6-4.7A8.5 8.5 0 1 1 8 19.5z"/></svg></a>
+  <a class="up" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m6 15 6-6 6 6"/></svg></a>
+</div>
+
+<script>
+/* ===== EDIT THESE TWO LINKS ===== */
+var APK_URL = "#get";              // put your app download link (APK) here
+var WHATSAPP_URL = "#get";         // put your WhatsApp channel / number link here
+/* ================================ */
+document.querySelectorAll('[data-download]').forEach(function(a){a.setAttribute('href',APK_URL);if(APK_URL!=="#get")a.setAttribute('download','')});
+['wa','waF'].forEach(function(id){var e=document.getElementById(id);e.setAttribute('href',WHATSAPP_URL);if(WHATSAPP_URL!=="#get"){e.target="_blank";e.rel="noopener"}});
+var b=document.getElementById('menuBtn'),d=document.getElementById('drawer');
+b.addEventListener('click',function(){var o=d.classList.toggle('open');b.setAttribute('aria-expanded',o)});
+d.addEventListener('click',function(){d.classList.remove('open');b.setAttribute('aria-expanded',false)});
+</script>
